@@ -4,10 +4,41 @@
  */
 package formulauno;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author renzetti.alessandro
  */
 public class Gara {
+    private List<Pilota> piloti;
+    private double lunghezzaPercorso;
     
+    public Gara(double lunghezzaPercorso) {
+        this.lunghezzaPercorso = lunghezzaPercorso;
+        this.piloti = new ArrayList<>();
+    }
+    
+    public void aggiungiPilota(String nome) {
+        Pilota pilota = new Pilota(nome, lunghezzaPercorso);
+        piloti.add(pilota);
+    }
+    
+    public void avvia() {
+        System.out.println("=== INIZIO GARA ===");
+        for (Pilota pilota : piloti) {
+            pilota.start();
+        }
+    }
+    
+    public void ferma() {
+        for (Pilota pilota : piloti) {
+            pilota.ferma();
+        }
+    }
+    
+    public List<Pilota> getPiloti() {
+        return piloti;
+    }
 }
