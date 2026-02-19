@@ -30,7 +30,7 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmbSquadra = new javax.swing.JComboBox<>();
+        cmbScuderia = new javax.swing.JComboBox<>();
         lblPilota = new javax.swing.JLabel();
         txtDistanza = new javax.swing.JTextField();
         lblDistanza = new javax.swing.JLabel();
@@ -39,10 +39,10 @@ public class FrmMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cmbSquadra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbSquadra.addActionListener(new java.awt.event.ActionListener() {
+        cmbScuderia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbScuderia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbSquadraActionPerformed(evt);
+                cmbScuderiaActionPerformed(evt);
             }
         });
 
@@ -75,7 +75,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtGiri, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDistanza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbSquadra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbScuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(212, 212, 212))
         );
         layout.setVerticalGroup(
@@ -83,7 +83,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbSquadra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbScuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPilota))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -103,13 +103,13 @@ public class FrmMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiriActionPerformed
 
-    private void cmbSquadraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSquadraActionPerformed
+    private void cmbScuderiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbScuderiaActionPerformed
         // TODO add your handling code here:
-        cmbSquadra.addItem("Ferrari");
-        cmbSquadra.addItem("Red Bull");
-        cmbSquadra.addItem("Mercedes");
-        cmbSquadra.addItem("McLaren");
-    }//GEN-LAST:event_cmbSquadraActionPerformed
+        cmbScuderia.addItem("Ferrari");
+        cmbScuderia.addItem("Red Bull");
+        cmbScuderia.addItem("Mercedes");
+        cmbScuderia.addItem("McLaren");
+    }//GEN-LAST:event_cmbScuderiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,7 +137,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbSquadra;
+    private javax.swing.JComboBox<String> cmbScuderia;
     private javax.swing.JLabel lblDistanza;
     private javax.swing.JLabel lblGiri;
     private javax.swing.JLabel lblPilota;
@@ -157,5 +157,14 @@ public class FrmMenu extends javax.swing.JFrame {
         ImageIcon mercedesIcon = new ImageIcon(meImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
         Image rbImg = new ImageIcon(getClass().getResource("/immagini/redbull.png")).getImage();
         ImageIcon redbullIcon = new ImageIcon(rbImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+    }
+    
+    private void caricaScuderie() {
+        cmbScuderia.removeAllItems();
+        cmbScuderia.addItem("Ferrari");
+        cmbScuderia.addItem("Mercedes");
+        cmbScuderia.addItem("Red Bull");
+        cmbScuderia.addItem("McLaren");
+        cmbScuderia.addItem("Aston Martin");
     }
 }
