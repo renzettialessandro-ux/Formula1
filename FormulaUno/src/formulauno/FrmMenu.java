@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package formulauno;
+import java.awt.Image;
 import javax.swing.*;
 /**
  *
@@ -143,14 +144,18 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JTextField txtDistanza;
     private javax.swing.JTextField txtGiri;
     // End of variables declaration//GEN-END:variables
-
+    int width = 50;
+    int height = 50;
+    
+    
     public void inserimentoImm(){
-        // Carica le icone dei team
-    ImageIcon astonmartinIcon = new ImageIcon(getClass().getResource("/immagini/astonmartin.png"));
-    ImageIcon ferrariIcon = new ImageIcon(getClass().getResource("/immagini/ferrari.png"));
-    ImageIcon mclarenIcon = new ImageIcon(getClass().getResource("/immagini/mclaren.png"));
-    ImageIcon mercedesIcon = new ImageIcon(getClass().getResource("/immagini/mercedes.png"));
-    ImageIcon redbullIcon = new ImageIcon(getClass().getResource("/immagini/redbull.png"));
+        Image amImg = new ImageIcon(getClass().getResource("/immagini/astonmartin.png")).getImage();
+        ImageIcon astonmartinIcon = new ImageIcon(amImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        Image feImg = new ImageIcon(getClass().getResource("/immagini/ferrari.png")).getImage();
+        ImageIcon ferrariIcon = new ImageIcon(feImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        Image meImg = new ImageIcon(getClass().getResource("/immagini/mercedes.png")).getImage();
+        ImageIcon mercedesIcon = new ImageIcon(meImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        Image rbImg = new ImageIcon(getClass().getResource("/immagini/redbull.png")).getImage();
+        ImageIcon redbullIcon = new ImageIcon(rbImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
-
 }
