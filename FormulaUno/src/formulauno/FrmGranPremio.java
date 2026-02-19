@@ -4,9 +4,12 @@
  */
 package formulauno;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.util.*;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -36,6 +39,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         atxClassifica = new javax.swing.JTextArea();
         btnEventi = new javax.swing.JButton();
@@ -47,10 +51,12 @@ public class FrmGranPremio extends javax.swing.JFrame {
         pbPilota2 = new javax.swing.JProgressBar();
         pbPilota3 = new javax.swing.JProgressBar();
         pbPilota4 = new javax.swing.JProgressBar();
-        lblPilota = new javax.swing.JLabel();
+        lblCar = new javax.swing.JLabel();
         lblPilota2 = new javax.swing.JLabel();
         lblPilota3 = new javax.swing.JLabel();
         lblPilota4 = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +84,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
             }
         });
 
-        lblPilota.setText("Pilota 1:");
+        lblCar.setText("Pilota 1:");
 
         lblPilota2.setText("Pilota 2:");
 
@@ -97,7 +103,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lblPilota)
+                                .addComponent(lblCar)
                                 .addGap(17, 17, 17))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +139,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pbPilota, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPilota))
+                            .addComponent(lblCar))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pbPilota2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,8 +217,9 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private javax.swing.JButton btnBox;
     private javax.swing.JButton btnEventi;
     private javax.swing.JButton btnStop;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblPilota;
+    private javax.swing.JLabel lblCar;
     private javax.swing.JLabel lblPilota2;
     private javax.swing.JLabel lblPilota3;
     private javax.swing.JLabel lblPilota4;
@@ -228,26 +235,28 @@ public class FrmGranPremio extends javax.swing.JFrame {
     String classifica="";
     int width = 15;
     int height = 15;
-    
+    int numeroGiri;
     
     private void avviaGara() {
+        int numeroGiri = 10; // default
+        
+    
+        this.numeroGiri = numeroGiri;
         gara = new Gara(100.0);
         gara.aggiungiPilota("Hamilton");
         gara.aggiungiPilota("Verstappen");
         gara.aggiungiPilota("Leclerc");
-        gara.aggiungiPilota("Alonso");
-        
+        gara.aggiungiPilota("Norris");
         piloti = gara.getPiloti();
-        
         pbPilota.setValue(0);
         pbPilota2.setValue(0);
         pbPilota3.setValue(0);
         pbPilota4.setValue(0);
-        
         gara.avvia();
-        
         timer = new Timer(100, e -> aggiorna());
         timer.start();
+        btnAvvia.setEnabled(false);
+        btnStop.setEnabled(true);
     }
     
     private void stopGara() {
@@ -264,6 +273,17 @@ public class FrmGranPremio extends javax.swing.JFrame {
         int percentuale = (int) pilota.getPercentuale();
         pb.setValue(percentuale);
         pb.setString(percentuale + "%");
+        pb.setValue(percentuale);
+        // Calcola il giro attuale
+        int giroAttuale = (int) ((pilota.getPercentuale() / 100.0) * numeroGiri) + 1;
+        if (giroAttuale > numeroGiri) {
+            giroAttuale = numeroGiri;
+        }
+        pb.setString(String.format("Giro %d/%d - %.1f%%", giroAttuale, numeroGiri, pilota.getPercentuale()));
+        // Muovi l'immagine della macchina in base alla percentuale
+        int progressBarWidth = pb.getWidth();
+        int carPosition = (int) ((percentuale / 100.0) * (progressBarWidth - 30));
+        lblCar.setBounds(carPosition, 5, 30, 20);
     }
     
     private void aggiorna() {
@@ -274,9 +294,13 @@ public class FrmGranPremio extends javax.swing.JFrame {
             return;
         }
         aggiornaPB(pbPilota, piloti.get(0));
+        lblCar.setText(piloti.get(0).getNome() + ":");
         aggiornaPB(pbPilota2, piloti.get(1));
+        lblPilota2.setText(piloti.get(1).getNome() + ":");
         aggiornaPB(pbPilota3, piloti.get(2));
+        lblPilota3.setText(piloti.get(2).getNome() + ":");
         aggiornaPB(pbPilota4, piloti.get(3));
+        lblPilota4.setText(piloti.get(3).getNome() + ":");
 
         for (Pilota p : piloti) {
             if (p.isInGara()) {
@@ -312,4 +336,5 @@ public class FrmGranPremio extends javax.swing.JFrame {
         ImageIcon bandiera = new ImageIcon(amImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
         btnAvvia.setIcon(bandiera); 
     }
+    
 }

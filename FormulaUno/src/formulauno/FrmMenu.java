@@ -162,9 +162,25 @@ public class FrmMenu extends javax.swing.JFrame {
     private void caricaScuderie() {
         cmbScuderia.removeAllItems();
         cmbScuderia.addItem("Ferrari");
-        cmbScuderia.addItem("Mercedes");
         cmbScuderia.addItem("Red Bull");
+        cmbScuderia.addItem("Mercedes");
         cmbScuderia.addItem("McLaren");
-        cmbScuderia.addItem("Aston Martin");
+    }
+    public void avvia(){
+       String scuderiaScelta = (String) cmbScuderia.getSelectedItem();
+        
+        if (scuderiaScelta == null) {
+            JOptionPane.showMessageDialog(this, 
+                "Seleziona una scuderia!", 
+                "Errore", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        double distanza;
+        int numeroGiri;
+        FrmGranPremio frmGara = new FrmGranPremio();
+        frmGara.setVisible(true);
+        this.dispose();
     }
 }
