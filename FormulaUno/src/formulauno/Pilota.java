@@ -9,12 +9,13 @@ import java.util.Random;
  *
  * @author renzetti.alessandro
  */
-public class Pilota extends Thread {
+public class Pilota implements Runnable {
     private String nome;
     private double distanzaPercorsa;
     private double lunghezzaPercorso;
     private boolean inGara;
     private Random random;
+    private Thread thread;
     
     public Pilota(String nome, double lunghezzaPercorso) {
         this.nome = nome;
@@ -49,7 +50,9 @@ public class Pilota extends Thread {
     
     public void ferma() {
         inGara = false;
-        interrupt();
+        if (thread != null) {
+            thread.interrupt();
+        }
     }
     
     public String getNome() {

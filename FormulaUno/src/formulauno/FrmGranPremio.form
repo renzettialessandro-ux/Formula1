@@ -70,7 +70,7 @@
                   <Component id="jScrollPane1" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnBox" max="32767" attributes="0"/>
-                      <Component id="btnStop" pref="112" max="32767" attributes="0"/>
+                      <Component id="btnRiavvia" pref="112" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -114,7 +114,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnStop" pref="40" max="32767" attributes="0"/>
+                          <Component id="btnRiavvia" pref="40" max="32767" attributes="0"/>
                           <Component id="btnAggiungi" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -156,12 +156,12 @@
         <Property name="text" type="java.lang.String" value="Box"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnStop">
+    <Component class="javax.swing.JButton" name="btnRiavvia">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ferma Gara"/>
+        <Property name="text" type="java.lang.String" value="Riavvia Gara"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStopActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRiavviaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAvvia">

@@ -45,7 +45,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         btnEventi = new javax.swing.JButton();
         btnAggiungi = new javax.swing.JButton();
         btnBox = new javax.swing.JButton();
-        btnStop = new javax.swing.JButton();
+        btnRiavvia = new javax.swing.JButton();
         btnAvvia = new javax.swing.JButton();
         pbPilota = new javax.swing.JProgressBar();
         pbPilota2 = new javax.swing.JProgressBar();
@@ -70,10 +70,10 @@ public class FrmGranPremio extends javax.swing.JFrame {
 
         btnBox.setText("Box");
 
-        btnStop.setText("Ferma Gara");
-        btnStop.addActionListener(new java.awt.event.ActionListener() {
+        btnRiavvia.setText("Riavvia Gara");
+        btnRiavvia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStopActionPerformed(evt);
+                btnRiavviaActionPerformed(evt);
             }
         });
 
@@ -127,7 +127,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnStop, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))
+                        .addComponent(btnRiavvia, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -160,7 +160,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
                             .addComponent(btnBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnStop, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(btnRiavvia, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                             .addComponent(btnAggiungi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
@@ -173,13 +173,13 @@ public class FrmGranPremio extends javax.swing.JFrame {
         // TODO add your handling code here:
         avviaGara();
         btnAvvia.setEnabled(false);
-        btnStop.setEnabled(true);
+        btnRiavvia.setEnabled(true);
     }//GEN-LAST:event_btnAvviaActionPerformed
 
-    private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
+    private void btnRiavviaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiavviaActionPerformed
         // TODO add your handling code here:
-        stopGara();
-    }//GEN-LAST:event_btnStopActionPerformed
+        riavviaGara();
+    }//GEN-LAST:event_btnRiavviaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,7 +216,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private javax.swing.JButton btnAvvia;
     private javax.swing.JButton btnBox;
     private javax.swing.JButton btnEventi;
-    private javax.swing.JButton btnStop;
+    private javax.swing.JButton btnRiavvia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCar;
@@ -256,15 +256,15 @@ public class FrmGranPremio extends javax.swing.JFrame {
         timer = new Timer(100, e -> aggiorna());
         timer.start();
         btnAvvia.setEnabled(false);
-        btnStop.setEnabled(true);
+        btnRiavvia.setEnabled(true);
     }
     
-    private void stopGara() {
+    private void riavviaGara() {
         if (gara != null) {
             gara.ferma();
             timer.stop();
             btnAvvia.setEnabled(true);
-            btnStop.setEnabled(false);
+            btnRiavvia.setEnabled(false);
         }
     }
     
@@ -274,16 +274,16 @@ public class FrmGranPremio extends javax.swing.JFrame {
         pb.setValue(percentuale);
         pb.setString(percentuale + "%");
         pb.setValue(percentuale);
-        // Calcola il giro attuale
+        
         int giroAttuale = (int) ((pilota.getPercentuale() / 100.0) * numeroGiri) + 1;
         if (giroAttuale > numeroGiri) {
             giroAttuale = numeroGiri;
         }
         pb.setString(String.format("Giro %d/%d - %.1f%%", giroAttuale, numeroGiri, pilota.getPercentuale()));
-        // Muovi l'immagine della macchina in base alla percentuale
-        int progressBarWidth = pb.getWidth();
+        
+        /*int progressBarWidth = pb.getWidth();
         int carPosition = (int) ((percentuale / 100.0) * (progressBarWidth - 30));
-        lblCar.setBounds(carPosition, 5, 30, 20);
+        lblCar.setBounds(carPosition, 5, 30, 20);*/
     }
     
     private void aggiorna() {
@@ -312,7 +312,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         if (tuttiFiniti) {
             timer.stop();
             btnAvvia.setEnabled(true);
-            btnStop.setEnabled(false);
+            btnRiavvia.setEnabled(false);
         }
     }
         
