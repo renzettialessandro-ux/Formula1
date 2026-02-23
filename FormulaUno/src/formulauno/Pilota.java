@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package formulauno;
 import java.util.Random;
-
 /**
  *
  * @author renzetti.alessandro
@@ -46,6 +41,11 @@ public class Pilota implements Runnable {
         
         inGara = false;
         System.out.println(nome + " ha terminato la gara!");
+    }
+    
+    public void start() {
+        thread = new Thread(this);
+        thread.start();
     }
     
     public void ferma() {

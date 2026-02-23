@@ -18,8 +18,8 @@ public class FormulaUno {
     public static void main(String[] args) {
         // TODO code application logic here
         SwingUtilities.invokeLater(() -> {
-            FrmGranPremio frame = new FrmGranPremio();
-            frame.setVisible(true);
+            FrmMenu fm=new FrmMenu();
+            fm.setVisible(true);
         });
     }
     

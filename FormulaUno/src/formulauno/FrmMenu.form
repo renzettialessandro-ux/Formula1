@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblDistanza" max="32767" attributes="0"/>
@@ -38,10 +38,15 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtGiri" min="-2" pref="64" max="-2" attributes="0"/>
-                  <Component id="txtDistanza" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbScuderia" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAvanza" min="-2" pref="110" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="sldDistanza" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="lblValoreSlider" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,17 +58,20 @@
                   <Component id="cmbScuderia" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPilota" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDistanza" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblDistanza" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sldDistanza" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblValoreSlider" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblGiri" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtGiri" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="158" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <Component id="btnAvanza" min="-2" pref="53" max="-2" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,8 +100,6 @@
         <Property name="text" type="java.lang.String" value="Scegli squadra"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDistanza">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblDistanza">
       <Properties>
         <Property name="text" type="java.lang.String" value="Distanza del circuito:"/>
@@ -108,6 +114,18 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGiriActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAvanza">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avanza"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvanzaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="sldDistanza">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblValoreSlider">
     </Component>
   </SubComponents>
 </Form>
