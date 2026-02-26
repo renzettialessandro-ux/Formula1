@@ -222,6 +222,15 @@ public class FrmMenu extends javax.swing.JFrame {
         cmbScuderia.addItem("Mercedes");
         cmbScuderia.addItem("Aston Martin");
     }
+    
+    private void caricaPilota() {
+        cmbPilota.removeAllItems();
+        cmbPilota.addItem("Ferrari");
+        cmbPilota.addItem("Red Bull");
+        cmbPilota.addItem("Mercedes");
+        cmbPilota.addItem("Aston Martin");
+    }
+    
     public void avvia(){
         String scuderiaScelta = (String) cmbScuderia.getSelectedItem();
         if (scuderiaScelta == null) {
@@ -252,4 +261,6 @@ public class FrmMenu extends javax.swing.JFrame {
         lblNGiri.setText(sldGiri.getValue() + "");
         });
     }
+    
+    
 }
