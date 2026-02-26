@@ -20,6 +20,8 @@ public class FrmMenu extends javax.swing.JFrame {
         initComponents();
         inserimentoImm();
         caricaScuderie();
+        cambioDistanza();
+        numeroGiri();
     }
 
     /**
@@ -35,10 +37,13 @@ public class FrmMenu extends javax.swing.JFrame {
         lblPilota = new javax.swing.JLabel();
         lblDistanza = new javax.swing.JLabel();
         lblGiri = new javax.swing.JLabel();
-        txtGiri = new javax.swing.JTextField();
         btnAvanza = new javax.swing.JButton();
         sldDistanza = new javax.swing.JSlider();
         lblValoreSlider = new javax.swing.JLabel();
+        sldGiri = new javax.swing.JSlider();
+        lblNGiri = new javax.swing.JLabel();
+        lblSceltaPilota = new javax.swing.JLabel();
+        cmbPilota = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,12 +60,6 @@ public class FrmMenu extends javax.swing.JFrame {
 
         lblGiri.setText("Numero di giri:");
 
-        txtGiri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGiriActionPerformed(evt);
-            }
-        });
-
         btnAvanza.setText("Avanza");
         btnAvanza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,29 +67,58 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
+        lblNGiri.setMaximumSize(new java.awt.Dimension(220, 220));
+        lblNGiri.setPreferredSize(new java.awt.Dimension(10, 10));
+
+        lblSceltaPilota.setText("Scegli il pilota");
+
+        cmbPilota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDistanza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPilota, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGiri))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtGiri, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbScuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAvanza, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDistanza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblGiri)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(sldGiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblNGiri, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(sldDistanza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(94, 94, 94))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(sldDistanza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(lblValoreSlider)))
-                .addGap(41, 41, 41))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPilota, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblSceltaPilota)
+                                .addGap(96, 96, 96)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cmbPilota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbScuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(244, 244, 244)
+                                        .addComponent(lblValoreSlider)))
+                                .addGap(41, 68, Short.MAX_VALUE))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(183, 183, 183)
+                .addComponent(btnAvanza, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,26 +127,28 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbScuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPilota))
-                .addGap(46, 46, 46)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSceltaPilota)
+                    .addComponent(cmbPilota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblValoreSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDistanza)
-                    .addComponent(sldDistanza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblValoreSlider))
+                    .addComponent(sldDistanza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGiri)
-                    .addComponent(txtGiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                    .addComponent(sldGiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNGiri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
                 .addComponent(btnAvanza, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtGiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiriActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGiriActionPerformed
 
     private void cmbScuderiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbScuderiaActionPerformed
         // TODO add your handling code here:
@@ -158,17 +188,21 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvanza;
+    private javax.swing.JComboBox<String> cmbPilota;
     private javax.swing.JComboBox<String> cmbScuderia;
     private javax.swing.JLabel lblDistanza;
     private javax.swing.JLabel lblGiri;
+    private javax.swing.JLabel lblNGiri;
     private javax.swing.JLabel lblPilota;
+    private javax.swing.JLabel lblSceltaPilota;
     private javax.swing.JLabel lblValoreSlider;
     private javax.swing.JSlider sldDistanza;
-    private javax.swing.JTextField txtGiri;
+    private javax.swing.JSlider sldGiri;
     // End of variables declaration//GEN-END:variables
     int width = 50;
     int height = 50;
-    int valore;
+    double distanza;
+    int numeroGiri;
     
     public void inserimentoImm(){
         Image amImg = new ImageIcon(getClass().getResource("/immagini/astonmartin.png")).getImage();
@@ -197,8 +231,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
             return;
         }
-        double distanza;
-        int numeroGiri;
+        
         FrmGranPremio frmGara = new FrmGranPremio();
         frmGara.setVisible(true);
         this.dispose();
@@ -206,8 +239,17 @@ public class FrmMenu extends javax.swing.JFrame {
     
     public void cambioDistanza(){
         sldDistanza.addChangeListener(e -> {
-        int valore = sldDistanza.getValue();
+        distanza = sldDistanza.getValue();
         lblValoreSlider.setText(sldDistanza.getValue() + " km");
+        });
+    }
+    
+    public void numeroGiri(){
+        sldGiri.addChangeListener(e -> {
+        numeroGiri = sldGiri.getValue();
+        sldGiri.setMaximum(65);
+        sldGiri.setMinimum(1);
+        lblNGiri.setText(sldGiri.getValue() + "");
         });
     }
 }
