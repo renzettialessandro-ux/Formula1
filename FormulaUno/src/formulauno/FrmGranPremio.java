@@ -4,15 +4,20 @@
  */
 package formulauno;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Insets;
 import java.util.*;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JProgressBar;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.plaf.basic.BasicProgressBarUI;
 
 /**
  *
@@ -51,7 +56,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         pbPilota2 = new javax.swing.JProgressBar();
         pbPilota3 = new javax.swing.JProgressBar();
         pbPilota4 = new javax.swing.JProgressBar();
-        lblCar = new javax.swing.JLabel();
+        lblPilota = new javax.swing.JLabel();
         lblPilota2 = new javax.swing.JLabel();
         lblPilota3 = new javax.swing.JLabel();
         lblPilota4 = new javax.swing.JLabel();
@@ -63,6 +68,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(84, 34, 59));
 
         atxClassifica.setColumns(20);
         atxClassifica.setRows(5);
@@ -93,7 +99,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
             }
         });
 
-        lblCar.setText("Pilota 1:");
+        lblPilota.setText("Pilota 1:");
 
         lblPilota2.setText("Pilota 2:");
 
@@ -107,13 +113,13 @@ public class FrmGranPremio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPilota2)
                             .addComponent(lblPilota3)
                             .addComponent(lblPilota4)
-                            .addComponent(lblCar))
+                            .addComponent(lblPilota))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(pbPilota2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,16 +132,16 @@ public class FrmGranPremio extends javax.swing.JFrame {
                             .addComponent(lblGiriPilota2)
                             .addComponent(lblGiriPilota3)
                             .addComponent(lblGiriPilota4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAggiungi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEventi, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(129, 129, 129)
-                        .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRiavvia, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -144,50 +150,50 @@ public class FrmGranPremio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(lblCar)
-                            .addGap(18, 18, 18)
-                            .addComponent(lblPilota2)
-                            .addGap(23, 23, 23)
-                            .addComponent(lblPilota3)
-                            .addGap(23, 23, 23)
-                            .addComponent(lblPilota4)
-                            .addGap(5, 5, 5))
-                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pbPilota, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGiriPilota))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pbPilota2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGiriPilota2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pbPilota3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGiriPilota3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pbPilota4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGiriPilota4))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPilota)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPilota2)
+                                .addGap(23, 23, 23)
+                                .addComponent(lblPilota3)
+                                .addGap(23, 23, 23)
+                                .addComponent(lblPilota4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pbPilota, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblGiriPilota))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pbPilota2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblGiriPilota2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pbPilota3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblGiriPilota3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pbPilota4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblGiriPilota4)))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnEventi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnEventi, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAggiungi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnRiavvia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRiavvia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAggiungi, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
         );
 
         pack();
@@ -248,11 +254,11 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private javax.swing.JButton btnRiavvia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCar;
     private javax.swing.JLabel lblGiriPilota;
     private javax.swing.JLabel lblGiriPilota2;
     private javax.swing.JLabel lblGiriPilota3;
     private javax.swing.JLabel lblGiriPilota4;
+    private javax.swing.JLabel lblPilota;
     private javax.swing.JLabel lblPilota2;
     private javax.swing.JLabel lblPilota3;
     private javax.swing.JLabel lblPilota4;
@@ -273,8 +279,6 @@ public class FrmGranPremio extends javax.swing.JFrame {
     
     private void avviaGara() {
         int numeroGiri = 10; // default
-        
-    
         this.numeroGiri = numeroGiri;
         gara = new Gara(100.0);
         gara.aggiungiPilota("Hamilton");
@@ -286,6 +290,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         pbPilota2.setValue(0);
         pbPilota3.setValue(0);
         pbPilota4.setValue(0);
+        impostaColoriProgressBar();
         gara.avvia();
         timer = new Timer(100, e -> aggiorna());
         timer.start();
@@ -335,13 +340,20 @@ public class FrmGranPremio extends javax.swing.JFrame {
             return;
         }
         aggiornaPB(pbPilota,  piloti.get(0), lblGiriPilota);
-        lblCar.setText(piloti.get(0).getNome() + ":");
+        lblPilota.setText(piloti.get(0).getNome() + ":");
+        impostaColore(pbPilota, piloti.get(0).getNome());
+
         aggiornaPB(pbPilota2, piloti.get(1), lblGiriPilota2);
         lblPilota2.setText(piloti.get(1).getNome() + ":");
+        impostaColore(pbPilota2, piloti.get(1).getNome());
+
         aggiornaPB(pbPilota3, piloti.get(2), lblGiriPilota3);
         lblPilota3.setText(piloti.get(2).getNome() + ":");
+        impostaColore(pbPilota3, piloti.get(2).getNome());
+
         aggiornaPB(pbPilota4, piloti.get(3), lblGiriPilota4);
         lblPilota4.setText(piloti.get(3).getNome() + ":");
+        impostaColore(pbPilota4, piloti.get(3).getNome());
 
         for (Pilota p : piloti) {
             if (p.isInGara()) {
@@ -377,6 +389,48 @@ public class FrmGranPremio extends javax.swing.JFrame {
         ImageIcon bandiera = new ImageIcon(amImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
         btnAvvia.setIcon(bandiera); 
     }
+    
+    private void impostaColoriProgressBar() {
+        impostaColore(pbPilota,   piloti.get(0).getNome());
+        impostaColore(pbPilota2,  piloti.get(1).getNome());
+        impostaColore(pbPilota3,  piloti.get(2).getNome());
+        impostaColore(pbPilota4,  piloti.get(3).getNome());
+    }
+    
+    private void impostaColore(JProgressBar pb, String nomePilota) {
+        Color colore;
+        switch (nomePilota) {
+            case "Leclerc":    colore = new Color(220, 0, 0);     break; // Rosso Ferrari
+            case "Hamilton":   colore = new Color(0, 210, 190);   break; // Turchese Mercedes
+            case "Verstappen": colore = new Color(30, 65, 255);   break; // Blu Red Bull
+            case "Alonso":     colore = new Color(0, 111, 98);    break; // Verde Aston Martin
+            default:           colore = Color.GRAY;               break;
+        }
+
+        final Color c = colore;
+        pb.setUI(new BasicProgressBarUI() {
+            @Override
+            protected Color getSelectionBackground() { return Color.WHITE; }
+            @Override
+            protected Color getSelectionForeground() { return Color.WHITE; }
+            @Override
+            public void paintDeterminate(Graphics g, JComponent comp) {
+                Insets b = progressBar.getInsets();
+                int barRectWidth  = progressBar.getWidth()  - b.left - b.right;
+                int barRectHeight = progressBar.getHeight() - b.top  - b.bottom;
+                int amountFull = getAmountFull(b, barRectWidth, barRectHeight);
+                g.setColor(Color.LIGHT_GRAY);
+                g.fillRect(b.left, b.top, barRectWidth, barRectHeight);
+                g.setColor(c);
+                g.fillRect(b.left, b.top, amountFull, barRectHeight);
+                if (progressBar.isStringPainted()) {
+                    paintString(g, b.left, b.top, barRectWidth, barRectHeight, amountFull, b);
+                }
+            }
+        });
+        pb.setStringPainted(true);
+    }
+    
     
     public void contaGiri(){
         

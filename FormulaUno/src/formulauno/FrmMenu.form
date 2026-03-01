@@ -28,50 +28,41 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblDistanza" max="32767" attributes="0"/>
+                          <Component id="lblDistanza" pref="196" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblGiri" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="sldGiri" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="lblNGiri" min="-2" pref="33" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="sldDistanza" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblValoreSlider" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="sldGiri" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblNGiri" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblPilota" min="-2" pref="92" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblSceltaPilota" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblPilota" min="-2" pref="92" max="-2" attributes="0"/>
+                          <Component id="lblSceltaPilota" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="cmbPilota" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbScuderia" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
-                                      <Component id="lblValoreSlider" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="41" pref="68" max="32767" attributes="0"/>
+                              <Component id="cmbScuderia" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="230" pref="324" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -97,22 +88,21 @@
                   <Component id="lblSceltaPilota" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbPilota" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblValoreSlider" min="-2" pref="20" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDistanza" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="sldDistanza" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblValoreSlider" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblGiri" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="sldGiri" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblNGiri" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNGiri" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
               <Component id="btnAvanza" min="-2" pref="53" max="-2" attributes="0"/>
-              <EmptySpace pref="89" max="32767" attributes="0"/>
+              <EmptySpace pref="117" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,11 +152,15 @@
     <Component class="javax.swing.JSlider" name="sldDistanza">
     </Component>
     <Component class="javax.swing.JLabel" name="lblValoreSlider">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="qui"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JSlider" name="sldGiri">
     </Component>
     <Component class="javax.swing.JLabel" name="lblNGiri">
       <Properties>
+        <Property name="text" type="java.lang.String" value="qui"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[220, 220]"/>
         </Property>
