@@ -18,12 +18,12 @@ public class FrmMenu extends javax.swing.JFrame {
      */
     public FrmMenu() {
         initComponents();
-        //inserimentoImm();
         caricaPilota();
         cambioDistanza();
         numeroGiri();
         sldGiri.setValue(0);
         sldDistanza.setValue(0);
+        
     }
 
     /**
@@ -168,21 +168,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JSlider sldDistanza;
     private javax.swing.JSlider sldGiri;
     // End of variables declaration//GEN-END:variables
-    int width = 50;
-    int height = 50;
     double distanza;
     int numeroGiri;
     
-    /*public void inserimentoImm(){
-        Image amImg = new ImageIcon(getClass().getResource("/immagini/astonmartin.png")).getImage();
-        ImageIcon astonmartinIcon = new ImageIcon(amImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
-        Image feImg = new ImageIcon(getClass().getResource("/immagini/ferrari.png")).getImage();
-        ImageIcon ferrariIcon = new ImageIcon(feImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
-        Image meImg = new ImageIcon(getClass().getResource("/immagini/mercedes.png")).getImage();
-        ImageIcon mercedesIcon = new ImageIcon(meImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
-        Image rbImg = new ImageIcon(getClass().getResource("/immagini/redbull.png")).getImage();
-        ImageIcon redbullIcon = new ImageIcon(rbImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
-    }*/
+    
     
     private void caricaPilota() {
         cmbPilota.removeAllItems();

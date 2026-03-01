@@ -24,21 +24,21 @@ import javax.swing.plaf.basic.BasicProgressBarUI;
  * @author renzetti.alessandro
  */
 public class FrmGranPremio extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmGranPremio.class.getName());
 
     /**
      * Creates new form FrmGranPremio
      */
-    
     public FrmGranPremio(int numeroGiri, double distanza, String pilotaScelto) {
         initComponents();
         ridimensionaBandiera(150, 100);
+        inserimentoImm();
+        creaCarPiloti();
         this.numeroGiri = numeroGiri;
         this.distanza = distanza;
         this.pilotaScelto = pilotaScelto;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -219,7 +219,13 @@ public class FrmGranPremio extends javax.swing.JFrame {
 
     private void btnBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoxActionPerformed
         // TODO add your handling code here:
-        
+        if (piloti == null) return;
+        for (Pilota p : piloti) {
+            if (p.getNome().equals(pilotaScelto)) {
+                p.setBoxFatto(true);
+                break;
+            }
+        }
     }//GEN-LAST:event_btnBoxActionPerformed
 
     /**
@@ -244,7 +250,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmGranPremio(10, 100.0,"").setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmGranPremio(10, 100.0, "").setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -273,38 +279,85 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private Gara gara;
     private Timer timer;
     boolean tuttiFiniti = true;
-    String classifica="";
+    String classifica = "";
     int width = 15;
     int height = 15;
     int numeroGiri = 0;
     double distanza;
     double soglia = 100.0 / numeroGiri;
-    String pilotaScelto= "";
+    String pilotaScelto = "";
+    private JLabel carPilota1, carPilota2, carPilota3, carPilota4;
     
+
+    public void inserimentoImm() {
+        Image amImg = new ImageIcon(getClass().getResource("/immagini/astonmartin.png")).getImage();
+        ImageIcon astonmartinIcon = new ImageIcon(amImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        Image feImg = new ImageIcon(getClass().getResource("/immagini/ferrari.png")).getImage();
+        ImageIcon ferrariIcon = new ImageIcon(feImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        Image meImg = new ImageIcon(getClass().getResource("/immagini/mercedes.png")).getImage();
+        ImageIcon mercedesIcon = new ImageIcon(meImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        Image rbImg = new ImageIcon(getClass().getResource("/immagini/redbull.png")).getImage();
+        ImageIcon redbullIcon = new ImageIcon(rbImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+    }
+    
+    private void creaCarPiloti() {
+        Image img = new ImageIcon(getClass().getResource("/immagini/ferrariCar.png")).getImage();
+        ImageIcon icon = new ImageIcon(img.getScaledInstance(35, 20, Image.SCALE_SMOOTH));
+
+        carPilota1 = new JLabel(icon);
+        carPilota2 = new JLabel(icon);
+        carPilota3 = new JLabel(icon);
+        carPilota4 = new JLabel(icon);
+
+        carPilota1.setSize(35, 20);
+        carPilota2.setSize(35, 20);
+        carPilota3.setSize(35, 20);
+        carPilota4.setSize(35, 20);
+
+        getContentPane().add(carPilota1);
+        getContentPane().add(carPilota2);
+        getContentPane().add(carPilota3);
+        getContentPane().add(carPilota4);
+    }
+
+    private void aggiornaCar(JLabel car, JProgressBar pb) {
+        int x = pb.getX() + (int) ((pb.getWidth() - 30) * pb.getValue() / 100.0);
+        int y = pb.getY();
+        car.setLocation(x, y);
+    }
+
     private void avviaGara() {
         this.numeroGiri = numeroGiri;
         gara = new Gara(distanza);
+        
         gara.aggiungiPilota("Hamilton");
         gara.aggiungiPilota("Verstappen");
         gara.aggiungiPilota("Leclerc");
         gara.aggiungiPilota("Alonso");
+        
         piloti = gara.getPiloti();
+        
         pbPilota.setValue(0);
         pbPilota2.setValue(0);
         pbPilota3.setValue(0);
         pbPilota4.setValue(0);
+        
         impostaColoriProgressBar();
         gara.avvia();
+        
+        for (Pilota p : piloti) {
+            p.setNomeGiocatore(pilotaScelto);
+        }
         timer = new Timer(100, e -> aggiorna());
         timer.start();
         btnAvvia.setEnabled(false);
         btnRiavvia.setEnabled(true);
         lblGiriPilota.setText("Giro 1/" + numeroGiri);
-        lblGiriPilota2.setText("Giro 1/" + numeroGiri);        
+        lblGiriPilota2.setText("Giro 1/" + numeroGiri);
         lblGiriPilota3.setText("Giro 1/" + numeroGiri);
         lblGiriPilota4.setText("Giro 1/" + numeroGiri);
     }
-    
+
     private void riavviaGara() {
         if (gara != null) {
             gara.ferma();
@@ -313,28 +366,30 @@ public class FrmGranPremio extends javax.swing.JFrame {
             btnRiavvia.setEnabled(false);
         }
     }
-    
+
     private void aggiornaPB(JProgressBar pb, Pilota pilota, JLabel lblGiriPilota1) {
         List<Pilota> piloti = gara.getPiloti();
         int percentuale = (int) pilota.getPercentuale();
         pb.setValue(percentuale);
         pb.setString(percentuale + "%");
         pb.setValue(percentuale);
-        
+
         int giroAttuale = (int) ((pilota.getPercentuale() / 100.0) * numeroGiri) + 1;
-        if (giroAttuale > numeroGiri) giroAttuale = numeroGiri;
-    
+        if (giroAttuale > numeroGiri) {
+            giroAttuale = numeroGiri;
+        }
+
         pb.setString(percentuale + "%");
         lblGiriPilota.setText("Giro " + giroAttuale + "/" + numeroGiri);
         lblGiriPilota2.setText("Giro " + giroAttuale + "/" + numeroGiri);
         lblGiriPilota3.setText("Giro " + giroAttuale + "/" + numeroGiri);
         lblGiriPilota4.setText("Giro " + giroAttuale + "/" + numeroGiri);
-        
+
         /*int progressBarWidth = pb.getWidth();
         int carPosition = (int) ((percentuale / 100.0) * (progressBarWidth - 30));
         lblCar.setBounds(carPosition, 5, 30, 20);*/
     }
-    
+
     private void aggiorna() {
         if (gara == null) {
             return;
@@ -342,7 +397,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         if (piloti.size() < 4) {
             return;
         }
-        aggiornaPB(pbPilota,  piloti.get(0), lblGiriPilota);
+        aggiornaPB(pbPilota, piloti.get(0), lblGiriPilota);
         lblPilota.setText(piloti.get(0).getNome() + ":");
         impostaColore(pbPilota, piloti.get(0).getNome());
 
@@ -358,6 +413,12 @@ public class FrmGranPremio extends javax.swing.JFrame {
         lblPilota4.setText(piloti.get(3).getNome() + ":");
         impostaColore(pbPilota4, piloti.get(3).getNome());
 
+        aggiornaCar(carPilota1, pbPilota);
+        aggiornaCar(carPilota2, pbPilota2);
+        aggiornaCar(carPilota3, pbPilota3);
+        aggiornaCar(carPilota4, pbPilota4);
+
+        tuttiFiniti = true;
         for (Pilota p : piloti) {
             if (p.isInGara()) {
                 tuttiFiniti = false;
@@ -371,56 +432,73 @@ public class FrmGranPremio extends javax.swing.JFrame {
             btnRiavvia.setEnabled(false);
         }
     }
-        
-    public void classifica(){
+
+    public void classifica() {
         // Ordina i piloti per distanza percorsa (dal più avanti al meno avanti)
         List<Pilota> piloti = gara.getPiloti();
         piloti.sort((p1, p2) -> Double.compare(p2.getDistanzaPercorsa(), p1.getDistanzaPercorsa()));
-        classifica= "=== CLASSIFICA ===\n\n";
+        classifica = "=== CLASSIFICA ===\n\n";
         int posizione = 1;
         for (Pilota p : piloti) {
-            classifica += String.format("%d° %s - %.1f%%\n", 
-                posizione, 
-                p.getNome(), 
-                p.getPercentuale());
+            classifica += String.format("%d° %s - %.1f%%\n",
+                    posizione,
+                    p.getNome(),
+                    p.getPercentuale());
             posizione++;
         }
-        atxClassifica.setText(classifica.toString());   
+        atxClassifica.setText(classifica.toString());
     }
+
     public void ridimensionaBandiera(int width, int height) {
         Image amImg = new ImageIcon(getClass().getResource("/immagini/bandiera.png")).getImage();
         ImageIcon bandiera = new ImageIcon(amImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
-        btnAvvia.setIcon(bandiera); 
+        btnAvvia.setIcon(bandiera);
     }
-    
+
     private void impostaColoriProgressBar() {
-        impostaColore(pbPilota,   piloti.get(0).getNome());
-        impostaColore(pbPilota2,  piloti.get(1).getNome());
-        impostaColore(pbPilota3,  piloti.get(2).getNome());
-        impostaColore(pbPilota4,  piloti.get(3).getNome());
+        impostaColore(pbPilota, piloti.get(0).getNome());
+        impostaColore(pbPilota2, piloti.get(1).getNome());
+        impostaColore(pbPilota3, piloti.get(2).getNome());
+        impostaColore(pbPilota4, piloti.get(3).getNome());
     }
-    
+
     private void impostaColore(JProgressBar pb, String nomePilota) {
         Color colore;
         switch (nomePilota) {
-            case "Leclerc":    colore = new Color(220, 0, 0);     break; // Rosso Ferrari
-            case "Hamilton":   colore = new Color(0, 210, 190);   break; // Turchese Mercedes
-            case "Verstappen": colore = new Color(30, 65, 255);   break; // Blu Red Bull
-            case "Alonso":     colore = new Color(0, 111, 98);    break; // Verde Aston Martin
-            default:           colore = Color.GRAY;               break;
+            case "Leclerc":
+                colore = new Color(220, 0, 0);
+                break; // Rosso Ferrari
+            case "Hamilton":
+                colore = new Color(0, 210, 190);
+                break; // Turchese Mercedes
+            case "Verstappen":
+                colore = new Color(30, 65, 255);
+                break; // Blu Red Bull
+            case "Alonso":
+                colore = new Color(0, 111, 98);
+                break; // Verde Aston Martin
+            default:
+                colore = Color.GRAY;
+                break;
         }
 
         final Color c = colore;
         pb.setUI(new BasicProgressBarUI() {
             @Override
-            protected Color getSelectionBackground() { return Color.WHITE; }
+            protected Color getSelectionBackground() {
+                return Color.WHITE;
+            }
+
             @Override
-            protected Color getSelectionForeground() { return Color.WHITE; }
+            protected Color getSelectionForeground() {
+                return Color.WHITE;
+            }
+
             @Override
             public void paintDeterminate(Graphics g, JComponent comp) {
                 Insets b = progressBar.getInsets();
-                int barRectWidth  = progressBar.getWidth()  - b.left - b.right;
-                int barRectHeight = progressBar.getHeight() - b.top  - b.bottom;
+                int barRectWidth = progressBar.getWidth() - b.left - b.right;
+                int barRectHeight = progressBar.getHeight() - b.top - b.bottom;
                 int amountFull = getAmountFull(b, barRectWidth, barRectHeight);
                 g.setColor(Color.LIGHT_GRAY);
                 g.fillRect(b.left, b.top, barRectWidth, barRectHeight);
