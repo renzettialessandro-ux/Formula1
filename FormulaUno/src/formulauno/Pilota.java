@@ -25,7 +25,7 @@ public class Pilota implements Runnable {
         inGara = true;
         while (distanzaPercorsa < lunghezzaPercorso && inGara) {
             // Incremento casuale della distanza
-            double incremento = 0.5 + random.nextDouble() * 1.5;
+            double incremento = 0.5*(0.5 + random.nextDouble() * 1.5) * (100.0 / lunghezzaPercorso);
             distanzaPercorsa += incremento;
             
             if (distanzaPercorsa > lunghezzaPercorso) {

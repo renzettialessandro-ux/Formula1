@@ -34,48 +34,45 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPilota2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPilota3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPilota4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPilota" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="pbPilota2" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="pbPilota" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="pbPilota3" alignment="1" min="-2" pref="258" max="-2" attributes="0"/>
-                          <Component id="pbPilota4" min="-2" pref="258" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblGiriPilota" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblGiriPilota2" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblGiriPilota3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblGiriPilota4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="165" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnAggiungi" max="32767" attributes="0"/>
-                          <Component id="btnEventi" min="-2" pref="112" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnAvvia" min="-2" pref="146" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnBox" max="32767" attributes="0"/>
-                          <Component id="btnRiavvia" min="-2" pref="112" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblPilota2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPilota3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPilota4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPilota" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="pbPilota2" min="-2" pref="258" max="-2" attributes="0"/>
+                  <Component id="pbPilota" min="-2" pref="258" max="-2" attributes="0"/>
+                  <Component id="pbPilota3" alignment="1" min="-2" pref="258" max="-2" attributes="0"/>
+                  <Component id="pbPilota4" min="-2" pref="258" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblGiriPilota" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblGiriPilota2" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblGiriPilota3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblGiriPilota4" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnAggiungi" max="32767" attributes="0"/>
+                  <Component id="btnEventi" min="-2" pref="145" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnAvvia" min="-2" pref="215" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnRiavvia" pref="145" max="32767" attributes="0"/>
+                  <Component id="btnBox" pref="145" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -122,24 +119,28 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnEventi" min="-2" pref="78" max="-2" attributes="0"/>
-                          <Component id="btnBox" min="-2" pref="78" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnRiavvia" max="32767" attributes="0"/>
-                          <Component id="btnAggiungi" min="-2" pref="78" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="btnEventi" min="-2" pref="78" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="btnBox" min="-2" pref="78" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnRiavvia" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="btnAggiungi" min="-2" pref="78" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnAvvia" min="-2" pref="95" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btnAvvia" min="-2" pref="139" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
