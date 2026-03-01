@@ -50,10 +50,12 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         atxClassifica = new javax.swing.JTextArea();
         btnEventi = new javax.swing.JButton();
-        btnAggiungi = new javax.swing.JButton();
         btnBox = new javax.swing.JButton();
         btnRiavvia = new javax.swing.JButton();
         btnAvvia = new javax.swing.JButton();
@@ -69,8 +71,16 @@ public class FrmGranPremio extends javax.swing.JFrame {
         lblGiriPilota2 = new javax.swing.JLabel();
         lblGiriPilota3 = new javax.swing.JLabel();
         lblGiriPilota4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        atxEventi = new javax.swing.JTextArea();
 
         jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(84, 34, 59));
@@ -80,8 +90,11 @@ public class FrmGranPremio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(atxClassifica);
 
         btnEventi.setText("Eventi");
-
-        btnAggiungi.setText("Aggiungi Pilota");
+        btnEventi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEventiActionPerformed(evt);
+            }
+        });
 
         btnBox.setText("Box");
         btnBox.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +125,10 @@ public class FrmGranPremio extends javax.swing.JFrame {
 
         lblPilota4.setText("Pilota 4:");
 
+        atxEventi.setColumns(20);
+        atxEventi.setRows(5);
+        jScrollPane3.setViewportView(atxEventi);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,15 +154,15 @@ public class FrmGranPremio extends javax.swing.JFrame {
                     .addComponent(lblGiriPilota4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAggiungi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEventi, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(16, 16, 16)
+                .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btnEventi, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRiavvia, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                     .addComponent(btnBox, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
@@ -183,23 +200,21 @@ public class FrmGranPremio extends javax.swing.JFrame {
                                     .addComponent(pbPilota4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblGiriPilota4)))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(btnEventi, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBox, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRiavvia, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAggiungi, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnRiavvia, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAvvia, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEventi, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -219,7 +234,9 @@ public class FrmGranPremio extends javax.swing.JFrame {
 
     private void btnBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoxActionPerformed
         // TODO add your handling code here:
-        if (piloti == null) return;
+        if (piloti == null) {
+            return;
+        }
         for (Pilota p : piloti) {
             if (p.getNome().equals(pilotaScelto)) {
                 p.setBoxFatto(true);
@@ -227,6 +244,11 @@ public class FrmGranPremio extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnBoxActionPerformed
+
+    private void btnEventiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventiActionPerformed
+        // TODO add your handling code here:
+        applicaEventoAiPiloti();
+    }//GEN-LAST:event_btnEventiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,13 +277,17 @@ public class FrmGranPremio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea atxClassifica;
-    private javax.swing.JButton btnAggiungi;
+    private javax.swing.JTextArea atxEventi;
     private javax.swing.JButton btnAvvia;
     private javax.swing.JButton btnBox;
     private javax.swing.JButton btnEventi;
     private javax.swing.JButton btnRiavvia;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblGiriPilota;
     private javax.swing.JLabel lblGiriPilota2;
     private javax.swing.JLabel lblGiriPilota3;
@@ -287,7 +313,6 @@ public class FrmGranPremio extends javax.swing.JFrame {
     double soglia = 100.0 / numeroGiri;
     String pilotaScelto = "";
     private JLabel carPilota1, carPilota2, carPilota3, carPilota4;
-    
 
     public void inserimentoImm() {
         Image amImg = new ImageIcon(getClass().getResource("/immagini/astonmartin.png")).getImage();
@@ -299,7 +324,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         Image rbImg = new ImageIcon(getClass().getResource("/immagini/redbull.png")).getImage();
         ImageIcon redbullIcon = new ImageIcon(rbImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
-    
+
     private void creaCarPiloti() {
         Image img = new ImageIcon(getClass().getResource("/immagini/ferrariCar.png")).getImage();
         ImageIcon icon = new ImageIcon(img.getScaledInstance(35, 20, Image.SCALE_SMOOTH));
@@ -329,22 +354,22 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private void avviaGara() {
         this.numeroGiri = numeroGiri;
         gara = new Gara(distanza);
-        
+
         gara.aggiungiPilota("Hamilton");
         gara.aggiungiPilota("Verstappen");
         gara.aggiungiPilota("Leclerc");
         gara.aggiungiPilota("Alonso");
-        
+
         piloti = gara.getPiloti();
-        
+
         pbPilota.setValue(0);
         pbPilota2.setValue(0);
         pbPilota3.setValue(0);
         pbPilota4.setValue(0);
-        
+
         impostaColoriProgressBar();
         gara.avvia();
-        
+
         for (Pilota p : piloti) {
             p.setNomeGiocatore(pilotaScelto);
         }
@@ -467,16 +492,16 @@ public class FrmGranPremio extends javax.swing.JFrame {
         switch (nomePilota) {
             case "Leclerc":
                 colore = new Color(220, 0, 0);
-                break; // Rosso Ferrari
+                break;
             case "Hamilton":
                 colore = new Color(0, 210, 190);
-                break; // Turchese Mercedes
+                break;
             case "Verstappen":
                 colore = new Color(30, 65, 255);
-                break; // Blu Red Bull
+                break;
             case "Alonso":
                 colore = new Color(0, 111, 98);
-                break; // Verde Aston Martin
+                break; 
             default:
                 colore = Color.GRAY;
                 break;
@@ -510,5 +535,23 @@ public class FrmGranPremio extends javax.swing.JFrame {
             }
         });
         pb.setStringPainted(true);
+    }
+
+    private void applicaEventoAiPiloti() {
+        // scegli evento
+        Eventi[] eventiDisponibili = Eventi.values();
+        Eventi evento = eventiDisponibili[new Random().nextInt(eventiDisponibili.length)];
+
+        if (evento == Eventi.RAIN) {
+            for (Pilota p : piloti) {
+                p.applicaEvento(evento);
+            }
+            atxEventi.append("🌧 PIOGGIA! Tutti i piloti rallentano!\n");
+        } else {
+            int indiceCasuale = new Random().nextInt(piloti.size());
+            Pilota pilotaCasuale = piloti.get(indiceCasuale);   
+            pilotaCasuale.applicaEvento(evento);
+            atxEventi.append(evento.name() + " su " + pilotaCasuale.getNome() + "!\n");
+        }
     }
 }
