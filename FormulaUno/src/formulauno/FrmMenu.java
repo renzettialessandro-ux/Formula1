@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package formulauno;
-import java.awt.Image;
-import javax.swing.*;
 /**
- *
+ * Finestra del menu principale.
+ * Permette all'utente di selezionare il pilota preferito,
+ * impostare la distanza del circuito e il numero di giri
+ * tramite slider, per poi avviare la gara.
  * @author renzetti.alessandro
  */
 public class FrmMenu extends javax.swing.JFrame {
@@ -14,7 +15,9 @@ public class FrmMenu extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMenu.class.getName());
 
     /**
-     * Creates new form FrmMenu
+     * Crea e inizializza il menu principale.
+     * Carica i piloti disponibili, configura gli slider
+     * imposta i valori iniziali a zero.
      */
     public FrmMenu() {
         initComponents();
@@ -211,7 +214,9 @@ public class FrmMenu extends javax.swing.JFrame {
     int numeroGiri;
     
     
-    
+    /**
+     * Carica i nomi dei piloti disponibili nel combobox di selezione.
+     */
     private void caricaPilota() {
         cmbPilota.removeAllItems();
         cmbPilota.addItem("Hamilton");
@@ -220,7 +225,10 @@ public class FrmMenu extends javax.swing.JFrame {
         cmbPilota.addItem("Alonso");
     }
     
-    
+    /**
+     * Apre la finestra della gara passando i parametri scelti dall'utente.
+     * Controlla che un pilota sia stato selezionato prima di procedere.
+     */
     public void avvia(){
         String pilotaScelto = (String) cmbPilota.getSelectedItem();
         FrmGranPremio frmGara = new FrmGranPremio(numeroGiri, distanza, pilotaScelto);
@@ -228,6 +236,10 @@ public class FrmMenu extends javax.swing.JFrame {
         this.dispose();
     }
     
+    /**
+     * Aggiunge un listener allo slider della distanza per aggiornare
+     * in tempo reale il valore visualizzato e la variabile distanza.
+     */
     public void cambioDistanza(){
         sldDistanza.addChangeListener(e -> {
         distanza = sldDistanza.getValue();
@@ -235,6 +247,11 @@ public class FrmMenu extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * Aggiunge un listener allo slider dei giri per aggiornare
+     * in tempo reale il valore visualizzato e la variabile numeroGiri.
+     * Imposta il range dello slider tra 1 e 65 giri.
+     */
     public void numeroGiri(){
         sldGiri.addChangeListener(e -> {
         numeroGiri = sldGiri.getValue();
@@ -243,6 +260,4 @@ public class FrmMenu extends javax.swing.JFrame {
         lblNGiri.setText(sldGiri.getValue() + "");
         });
     }
-    
-    
 }

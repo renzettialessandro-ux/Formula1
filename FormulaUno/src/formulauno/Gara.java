@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Si occupa di creare i piloti, avviare la gara e fermarla quando necessario.
  * @author renzetti.alessandro
  */
 public class Gara {

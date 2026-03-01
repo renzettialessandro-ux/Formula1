@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 public class FormulaUno {
 
     /**
+     * Avvia il menu principale
      * @param args the command line arguments
      */
     public static void main(String[] args) {

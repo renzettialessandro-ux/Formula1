@@ -5,7 +5,6 @@
 package formulauno;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
@@ -13,14 +12,15 @@ import java.util.*;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JProgressBar;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
 /**
- *
+ * Finestra principale della gara di Formula 1.
+ * Mostra le progress bar dei 4 piloti con i loro colori della scuderia,
+ * la classifica in tempo reale, e permette di gestire eventi speciali e soste ai box.
+ * Riceve i parametri di gara (numero giri, distanza, pilota scelto) dal menu.
  * @author renzetti.alessandro
  */
 public class FrmGranPremio extends javax.swing.JFrame {
@@ -28,7 +28,10 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmGranPremio.class.getName());
 
     /**
-     * Creates new form FrmGranPremio
+     * Crea la finestra della gara con i parametri scelti dall'utente nel menu.
+     * @param numeroGiri   il numero di giri della gara
+     * @param distanza     la lunghezza del circuito in km
+     * @param pilotaScelto il nome del pilota controllato dal giocatore
      */
     public FrmGranPremio(int numeroGiri, double distanza, String pilotaScelto) {
         initComponents();
@@ -228,16 +231,16 @@ public class FrmGranPremio extends javax.swing.JFrame {
                                 .addComponent(lblPilota3)
                                 .addComponent(pbPilota3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblGiriPilota3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPilota4, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                            .addComponent(pbPilota4, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                            .addComponent(lblGiriPilota4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblPilota4, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                    .addComponent(pbPilota4, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                    .addComponent(lblGiriPilota4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
@@ -359,19 +362,32 @@ public class FrmGranPremio extends javax.swing.JFrame {
     private javax.swing.JProgressBar pbPilota3;
     private javax.swing.JProgressBar pbPilota4;
     // End of variables declaration//GEN-END:variables
+    /** Lista dei piloti partecipanti alla gara corrente. */
     private List<Pilota> piloti;
+    
     private Gara gara;
+    /** Timer Swing che aggiorna l'interfaccia ogni 100ms. */
     private Timer timer;
+    /** Indica se tutti i piloti hanno terminato la gara. */
     boolean tuttiFiniti = true;
+    
     String classifica = "";
     int width = 15;
     int height = 15;
     int numeroGiri = 0;
     double distanza;
+    /** Soglia percentuale per giro (calcolata in base al numero di giri). */
     double soglia = 100.0 / numeroGiri;
+    
+     /** Nome del pilota scelto dall'utente nel menu. */
     String pilotaScelto = "";
+    /** Label per visualizzare la macchinina del pilota 1 sopra la progress bar. */
     private JLabel carPilota1, carPilota2, carPilota3, carPilota4;
 
+    /**
+     * Crea le label con le icone delle macchinine e le aggiunge al contenuto della finestra.
+     * Le macchinine vengono posizionate sopra le progress bar tramite il JLayeredPane.
+     */
     private void creaCarPiloti() {
         Image img = new ImageIcon(getClass().getResource("/immagini/ferrariCar.png")).getImage();
         ImageIcon icon = new ImageIcon(img.getScaledInstance(35, 20, Image.SCALE_SMOOTH));
@@ -386,18 +402,33 @@ public class FrmGranPremio extends javax.swing.JFrame {
         carPilota3.setSize(35, 20);
         carPilota4.setSize(35, 20);
 
+        /**
+         * Il ContentPane è il livello principale dove vengono messi tutti i componenti visibili. 
+         * getContentPane() restituisce quel livello, e .add() ci aggiunge dentro il componente.
+         */
         getContentPane().add(carPilota1);
         getContentPane().add(carPilota2);
         getContentPane().add(carPilota3);
         getContentPane().add(carPilota4);
     }
 
+    /**
+     * Aggiorna la posizione della macchinina in base al valore corrente della progress bar.
+     *
+     * @param car la label con l'immagine della macchinina
+     * @param pb  la progress bar di riferimento
+     */
     private void aggiornaCar(JLabel car, JProgressBar pb) {
         int x = pb.getX() + (int) ((pb.getWidth() - 30) * pb.getValue() / 100.0);
         int y = pb.getY();
         car.setLocation(x, y);
     }
 
+    /**
+     * Inizializza e avvia una nuova gara con i 4 piloti predefiniti.
+     * Crea l'oggetto Gara, aggiunge i piloti, azzera le progress bar,
+     * imposta i colori e avvia il timer.
+     */
     private void avviaGara() {
         this.numeroGiri = numeroGiri;
         gara = new Gara(distanza);
@@ -430,6 +461,10 @@ public class FrmGranPremio extends javax.swing.JFrame {
         lblGiriPilota4.setText("Giro 1/" + numeroGiri);
     }
 
+    /**
+     * Ferma la gara in corso, interrompendo tutti i thread dei piloti e il timer.
+     * Riabilita il pulsante Avvia e disabilita il pulsante Riavvia.
+     */
     private void riavviaGara() {
         if (gara != null) {
             gara.ferma();
@@ -438,7 +473,13 @@ public class FrmGranPremio extends javax.swing.JFrame {
             btnRiavvia.setEnabled(false);
         }
     }
-
+    
+    /**
+     * Aggiorna il valore di una singola progress bar e le label dei giri.
+     * @param pb la progress bar da aggiornare
+     * @param pilota il pilota di riferimento
+     * @param lblGiriPilota1 la label del giro corrente (parametro non usato internamente)
+     */
     private void aggiornaPB(JProgressBar pb, Pilota pilota, JLabel lblGiriPilota1) {
         List<Pilota> piloti = gara.getPiloti();
         int percentuale = (int) pilota.getPercentuale();
@@ -456,12 +497,13 @@ public class FrmGranPremio extends javax.swing.JFrame {
         lblGiriPilota2.setText("Giro " + giroAttuale + "/" + numeroGiri);
         lblGiriPilota3.setText("Giro " + giroAttuale + "/" + numeroGiri);
         lblGiriPilota4.setText("Giro " + giroAttuale + "/" + numeroGiri);
-
-        /*int progressBarWidth = pb.getWidth();
-        int carPosition = (int) ((percentuale / 100.0) * (progressBarWidth - 30));
-        lblCar.setBounds(carPosition, 5, 30, 20);*/
     }
 
+    /**
+     * Metodo chiamato dal timer ogni 100ms per aggiornare l'intera interfaccia.
+     * Aggiorna le progress bar, i nomi dei piloti, le macchinine e la classifica.
+     * Ferma il timer quando tutti i piloti hanno terminato la gara.
+     */
     private void aggiorna() {
         if (gara == null) {
             return;
@@ -505,6 +547,10 @@ public class FrmGranPremio extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Calcola e aggiorna la classifica dei piloti ordinati per distanza percorsa.
+     * Visualizza la classifica nella text area dedicata con posizione, nome e percentuale.
+     */
     public void classifica() {
         // Ordina i piloti per distanza percorsa (dal più avanti al meno avanti)
         List<Pilota> piloti = gara.getPiloti();
@@ -521,12 +567,20 @@ public class FrmGranPremio extends javax.swing.JFrame {
         atxClassifica.setText(classifica.toString());
     }
 
+    /**
+     * Ridimensiona l'immagine della bandiera a scacchi sul pulsante Avvia.
+     * @param width la larghezza desiderata in pixel
+     * @param height l'altezza desiderata in pixel
+     */
     public void ridimensionaBandiera(int width, int height) {
         Image amImg = new ImageIcon(getClass().getResource("/immagini/bandiera.png")).getImage();
         ImageIcon bandiera = new ImageIcon(amImg.getScaledInstance(width, height, Image.SCALE_SMOOTH));
         btnAvvia.setIcon(bandiera);
     }
     
+    /**
+     * Imposta il colore di tutte e 4 le progress bar in base al nome del pilota assegnato.
+     */
     private void impostaColoriProgressBar() {
         impostaColore(pbPilota, piloti.get(0).getNome());
         impostaColore(pbPilota2, piloti.get(1).getNome());
@@ -534,6 +588,11 @@ public class FrmGranPremio extends javax.swing.JFrame {
         impostaColore(pbPilota4, piloti.get(3).getNome());
     }
 
+    /**
+     * Imposta il colore e l'immagine della macchinina di una progress bar in base al nome del pilota.
+     * @param pb la progress bar da colorare
+     * @param nomePilota il nome del pilota (determina colore e immagine scuderia)
+     */
     private void impostaColore(JProgressBar pb, String nomePilota) {
         Color colore;
         Image imgCar;
@@ -609,6 +668,12 @@ public class FrmGranPremio extends javax.swing.JFrame {
         pb.setStringPainted(true);
     }
 
+    /**
+     * Applica un evento casuale ai piloti in gara.
+     * Se l'evento e' RAIN, viene applicato a tutti i piloti.
+     * Per gli altri eventi, viene scelto un pilota casuale.
+     * L'evento viene registrato nella text area degli eventi.
+     */
     private void applicaEventoAiPiloti() {
         // scegli evento
         Eventi[] eventiDisponibili = Eventi.values();
