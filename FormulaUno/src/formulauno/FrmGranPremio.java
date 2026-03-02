@@ -114,9 +114,12 @@ public class FrmGranPremio extends javax.swing.JFrame {
 
         lblGiriPilota4.setForeground(new java.awt.Color(255, 255, 255));
 
+        atxClassifica.setEditable(false);
+        atxClassifica.setBackground(new java.awt.Color(30, 17, 17));
         atxClassifica.setColumns(20);
+        atxClassifica.setForeground(new java.awt.Color(255, 255, 255));
         atxClassifica.setRows(5);
-        atxClassifica.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        atxClassifica.setBorder(null);
         jScrollPane1.setViewportView(atxClassifica);
 
         btnAvvia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/immagini/Bandiera.png"))); // NOI18N
@@ -136,9 +139,11 @@ public class FrmGranPremio extends javax.swing.JFrame {
             }
         });
 
+        atxEventi.setBackground(new java.awt.Color(30, 17, 17));
         atxEventi.setColumns(20);
+        atxEventi.setForeground(new java.awt.Color(255, 255, 255));
         atxEventi.setRows(5);
-        atxEventi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        atxEventi.setBorder(null);
         jScrollPane3.setViewportView(atxEventi);
 
         btnBox.setText("Box");
@@ -300,7 +305,6 @@ public class FrmGranPremio extends javax.swing.JFrame {
                 try {
                     Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                    
                     }
                 break;
             }
