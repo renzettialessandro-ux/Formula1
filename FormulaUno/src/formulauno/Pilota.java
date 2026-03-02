@@ -122,9 +122,8 @@ public class Pilota implements Runnable {
                 }
             }
 
-            double incremento = 0.5 * (0.5 + random.nextDouble() * 1.5)
-                    * (100.0 / lunghezzaPercorso)
-                    * fattoreGomme;
+            
+            double incremento = (0.5 * (0.5 + random.nextDouble() * 1.5)* (100.0 / lunghezzaPercorso)* fattoreGomme)*0.75;
             distanzaPercorsa += incremento;
 
             if (distanzaPercorsa > lunghezzaPercorso) {
