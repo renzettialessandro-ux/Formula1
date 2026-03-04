@@ -584,7 +584,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
         classifica = "=== CLASSIFICA ===\n\n";
         int posizione = 1;
         for (Pilota p : piloti) {
-            classifica += String.format("\n",
+            classifica += String.format("\"%d. %s - %.1f%%\n",
                     posizione,
                     p.getNome(),
                     p.getPercentuale());
