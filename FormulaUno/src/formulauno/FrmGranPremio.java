@@ -506,14 +506,12 @@ public class FrmGranPremio extends javax.swing.JFrame {
         int percentuale = (int) pilota.getPercentuale();
         pb.setValue(percentuale);
         pb.setString(percentuale + "%");
-        pb.setValue(percentuale);
 
         int giroAttuale = (int) ((pilota.getPercentuale() / 100.0) * numeroGiri) + 1;
         if (giroAttuale > numeroGiri) {
             giroAttuale = numeroGiri;
         }
 
-        pb.setString(percentuale + "%");
         lblGiriPilota.setText("Giro " + giroAttuale + "/" + numeroGiri);
         lblGiriPilota2.setText("Giro " + giroAttuale + "/" + numeroGiri);
         lblGiriPilota3.setText("Giro " + giroAttuale + "/" + numeroGiri);
