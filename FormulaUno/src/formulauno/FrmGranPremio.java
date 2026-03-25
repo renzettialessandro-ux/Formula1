@@ -498,7 +498,7 @@ public class FrmGranPremio extends javax.swing.JFrame {
      *
      * @param pb la progress bar da aggiornare
      * @param pilota il pilota di riferimento
-     * @param lblGiriPilota1 la label del giro corrente (parametro non usato
+     * @param lblGiriPilota1 la label del giro corrente
      * internamente)
      */
     private void aggiornaPB(JProgressBar pb, Pilota pilota, JLabel lblGiriPilota1) {
