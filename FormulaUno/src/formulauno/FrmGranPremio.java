@@ -386,14 +386,11 @@ public class FrmGranPremio extends javax.swing.JFrame {
     boolean tuttiFiniti = true;
 
     String classifica = "";
-    int width = 15;
-    int height = 15;
     int numeroGiri = 0;
     double distanza;
     /**
      * Soglia percentuale per giro (calcolata in base al numero di giri).
      */
-    double soglia = 100.0 / numeroGiri;
 
     /**
      * Nome del pilota scelto dall'utente nel menu.
@@ -453,7 +450,6 @@ public class FrmGranPremio extends javax.swing.JFrame {
      * colori e avvia il timer.
      */
     private void avviaGara() {
-        this.numeroGiri = numeroGiri;
         gara = new Gara(distanza);
 
         gara.aggiungiPilota("Hamilton");
