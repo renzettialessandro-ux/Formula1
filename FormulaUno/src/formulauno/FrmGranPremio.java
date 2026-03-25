@@ -660,11 +660,6 @@ public class FrmGranPremio extends javax.swing.JFrame {
             }
 
             @Override
-            protected Color getSelectionForeground() {
-                return Color.WHITE;
-            }
-
-            @Override
             public void paintDeterminate(Graphics g, JComponent comp) {
                 Insets b = progressBar.getInsets();//restituisce i bordi della progress bar.
                 int barLarghezza = progressBar.getWidth() - b.left - b.right;//Calcola la larghezza utile della barra, sottraendo i margini sinistro e destro
