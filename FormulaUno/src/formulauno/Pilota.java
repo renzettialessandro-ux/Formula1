@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
 package formulauno;
 
 import java.util.Random;
@@ -123,7 +127,7 @@ public class Pilota implements Runnable {
             }
 
             
-            double incremento = (0.5 * (0.5 + random.nextDouble() * 1.5)* (100.0 / lunghezzaPercorso)* fattoreGomme)*0.75;
+            double incremento = (0.5 * (0.5 + random.nextDouble() * 1.5)* fattoreGomme)*0.75;
             distanzaPercorsa += incremento;
 
             if (distanzaPercorsa > lunghezzaPercorso) {
